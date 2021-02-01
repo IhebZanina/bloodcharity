@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+		<title>
+			{% block title %}
+				BloodCharity
+			{% endblock %}
+		</title>
+		<meta content="" name="description">
+		<meta
+		content="" name="keywords">
+
+		<!-- Favicons -->
+		<link
+		rel="shortcut icon" type="image/x-icon" href="logo/toplogo-removebg.png"/>
+
+
+		<!-- Google Fonts -->
+		<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+		<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+		<link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+		<link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+		<link
+		href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+		<!-- Template Main CSS File -->
+		<link href="assets/css/style.css" rel="stylesheet">
+	</head>
+
+
+	<body>
+
+		<!-- ======= Top Bar ======= -->
+		<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+			<div class="container d-flex align-items-center justify-content-between">
+				<div class="d-flex align-items-center">
+					<i class="icofont-clock-time"></i>
+					Monday - Sunday, 1AM to 12PM
+				</div>
+				<div class="d-flex align-items-center">
+					<i class="icofont-phone"></i>
+					Call us now +216 51100490
+				</div>
+			</div>
+		</div>
+
+		<!-- ======= Header ======= -->
+		<header id="header" class="fixed-top">
+			<div class="container d-flex align-items-center">
+
+				<a href="{{ path('bloodcharity') }}" class="logo mr-auto"><img src="logo/logo.jpg" alt="BloodCharity"></a>
+
+
+				<nav class="nav-menu d-none d-lg-block">
+					<ul>
+						<li class="active">
+							<a href="#hero">
+								<i class="icofont-ui-home"></i>&nbsp Home</a>
+						</li>
+						<li>
+							<a href="#about">
+								<i class="icofont-info-circle"></i>&nbsp About</a>
+						</li>
+						<li>
+							<a href="#features">
+								<i class="icofont-light-bulb"></i>&nbsp Features</a>
+						</li>
+						<li>
+							<a href="#services">
+								<i class="icofont-unique-idea"></i>&nbsp Why giving blood?</a>
+						</li>
+
+						<li class="drop-down">
+							<a href="#doctors">
+								<i class="icofont-live-support"></i>&nbsp Volunteers</a>
+							<ul>
+								<li>
+									<a href="#doctors">Iheb Zanina</a>
+								</li>
+								<!--  <li class="drop-down">
+<a href="#">Deep Drop Down</a>
+<ul>
+<li><a href="#">Deep Drop Down 1</a></li>
+<li><a href="#">Deep Drop Down 2</a></li>
+<li><a href="#">Deep Drop Down 3</a></li>
+<li><a href="#">Deep Drop Down 4</a></li>
+<li><a href="#">Deep Drop Down 5</a></li>
+</ul>
+</li> -->
+								<li>
+									<a href="#doctors">Ebtissem Ayari
+									</a>
+								</li>
+								<li>
+									<a href="#doctors">Oumaima Jlassi</a>
+								</li>
+								<li>
+									<a href="#doctors">Jugson Munganga</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#contact">
+								<i class="icofont-support-faq"></i>&nbspContact</a>
+						</li>
+
+					</ul>
+				</nav>
+				<!-- .nav-menu -->
+
+				<a href="#appointment" class="appointment-btn scrollto">
+					<span class="d-none d-md-inline">Donate</span>
+					BLOOD &nbsp<i class="icofont-blood"></i>
+				</a>
+
+			</div>
+		</header>
+		<!-- End Header -->
+
+	
+
+		{% block body %}
+			
+		{% endblock %}
+
+		<!-- ======= Footer ======= -->
+		<footer id="footer">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-lg-3 col-md-6">
+							<div class="footer-info">
+								<h3>BloodCharity</h3>
+								<p>
+									Sahloul Hospital
+									<br>
+									Sousse, Tunisia<br><br>
+									<strong>Phone:</strong>
+									+216 51100490<br>
+									<strong>Email:</strong>
+									iheb.zanina@sousse.r-iset.tn<br>
+								</p>
+								<div class="social-links mt-3">
+									<a href="https://twitter.com/Iheb_Zanina" class="twitter">
+										<i class="bx bxl-twitter"></i>
+									</a>
+									<a href="https://www.facebook.com/ihebzanina/" class="facebook">
+										<i class="bx bxl-facebook"></i>
+									</a>
+									<a href="https://www.instagram.com/iheb_zanina/" class="instagram">
+										<i class="bx bxl-instagram"></i>
+									</a>
+									<a href="https://www.linkedin.com/in/iheb-zanina/" class="linkedin">
+										<i class="bx bxl-linkedin"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-2 col-md-6 footer-links">
+							<h4>Useful Links</h4>
+							<ul>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#hero">Home</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#about">About us</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#features">Features</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#gallery">Gallery</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#contact">Contact us</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="col-lg-3 col-md-6 footer-links">
+							<h4>Our Features</h4>
+							<ul>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#features">
+										Peer-to-Peer Connect</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#features">Real Time</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#features">Near By</a>
+								</li>
+								<li>
+									<i class="bx bx-chevron-right"></i>
+									<a class="scrollto" href="#features">Demand Supply Balanceg</a>
+								</li>
+
+							</ul>
+						</div>
+
+						<div class="col-lg-4 col-md-6 footer-newsletter">
+							<h4>Our Newsletter</h4>
+							<p>STAY INFORMED...<br>
+								Subscribe to our Newsletter
+							</p>
+							<form action="" method="post">
+								<input placeholder="Your Email" type="email" name="email"><input type="submit" value="Subscribe">
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="copyright">
+					&copy; Copyright
+					<strong>
+						<span>BloodCharity</span>
+					</strong>. All Rights Reserved
+				</div>
+				<div class="credits">
+					Made with love in
+					<a class="scrollto" href="#gallery">Tunisia
+						<i class="icofont-ui-love"></i>
+					</a>
+				</div>
+				<div class="credits"></div>
+			</div>
+		</footer><!-- End Footer --><div id="preloader"></div>
+		<a href="#" class="back-to-top">
+			<i class="icofont-simple-up"></i>
+		</a><!-- Vendor JS Files -->{% block javascripts %}{% endblock %}
+		<script src="assets/vendor/jquery/jquery.min.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+		
+		<script src="assets/vendor/counterup/counterup.min.js"></script>
+		<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="assets/vendor/venobox/venobox.min.js"></script>
+		<script src="assets/vendor/aos/aos.js"></script><!-- Template Main JS File --><script src="assets/js/main.js"></script>
+	</body>
+</html>
