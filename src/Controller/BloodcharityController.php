@@ -17,7 +17,7 @@ use Symfony\Component\Mime\Email;
 class BloodcharityController extends AbstractController
 {
     /**
-     * @Route("/", name="bloodcharity" ,methods={"GET","POST"})
+     * @Route("/", name="bloodcharity")
      */
     public function home(Request $request, DonorRepository $DonorRepository , MailerInterface $mailer  ): Response
     {
@@ -27,7 +27,8 @@ class BloodcharityController extends AbstractController
 
         $donorform = $this->createForm(BlooddonorType::class, $post, [
             'action' => '/#appointment',
-        ]);
+            'method' => 'POST',
+        ]) ;
 
         $donorform->handleRequest($request);
 
@@ -36,7 +37,7 @@ class BloodcharityController extends AbstractController
             $em = $this->getDoctrine()->getmanager();
             $em->persist($post);
             $em->flush();
-            $this->addFlash('success', 'Thank you! Make sure you will be available next days.');
+            $this->addFlash('success_donor', 'Thank you! Make sure you will be available next days.');
             return $this->redirectToRoute('bloodcharity');
         }
 
@@ -58,8 +59,6 @@ class BloodcharityController extends AbstractController
             
         }
 
-        
-
         //contact form
         $name = '' ;
         $contactform = $this->createForm(ContactdonorType::class, $post, [
@@ -68,26 +67,31 @@ class BloodcharityController extends AbstractController
 
          $contactform->handleRequest($request);
         
-         /* send email section disabled cause i deleted the parameters in .env 
-
+          //send email section disabled cause i deleted the parameters in .env 
+           
             if ($contactform->isSubmitted() && $contactform->isValid()) {
-            $name = $contactform['First_Name']->getData();
-            $emailfrom = $contactform['Last_Name']->getData();
-            $subject = $contactform['City']->getData();
-            $message = $contactform['CIN_Passport']->getData();
-
+            $name = $contactform['FirstName']->getData();
+            $emailfrom = $contactform['MyEmail']->getData();
+            $subject = $contactform['Subject']->getData();
+            $message = $contactform['Message']->getData();
+                
             $email = (new Email())
             ->from($emailfrom)
-            ->to('iheb257@gmail.com')
+            ->to('iheb.zannina@gmail.com')
             
             ->subject($subject)
-            ->html($message
-        );
-           
-
+           ->html('<b>Message sent from: </b>' .$emailfrom. '<br> <b>Message content: </b>' .$message);
+            try {
             $mailer->send($email);
+            } catch (TransportExceptionInterface $e) {
+            $this->addFlash('error_contact', $e);
+            return $this->redirectToRoute('bloodcharity');
+            }
+            $this->addFlash('success_contact', 'We will answer you as soon as possible');
+            return $this->redirectToRoute('bloodcharity');
+
         }
-        */
+        
 
         //page rendering and post values to twig
         return $this->render('bloodcharity/home.html.twig', [

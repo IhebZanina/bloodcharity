@@ -24,7 +24,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'CIN or Passport Number',  
-                    'class' => 'form-control rounded border border-info input',
+                    'class' => 'form-control rounded border border-danger input',
                 ]
             ])
 
@@ -35,7 +35,7 @@ class BlooddonorType extends AbstractType
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'First Name',
                     'data-rule'=>"minlen:4" ,'data-msg'=>"Please enter at least 4 chars",
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
                 ]
             ])
 
@@ -44,7 +44,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'Last Name',
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
 
                 ]
             ])
@@ -54,7 +54,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 30, 'required' => true,
                     'placeholder' => 'Email',
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
 
                 ]
             ])
@@ -64,7 +64,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'Country',
-                    'class' => '  form-control rounded border border-info',
+                    'class' => '  form-control rounded border border-danger',
                 ]
             ])
 
@@ -73,7 +73,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'City',
-                    'class' => '  form-control rounded border border-info',
+                    'class' => '  form-control rounded border border-danger',
                 ]
             ])
 
@@ -83,7 +83,7 @@ class BlooddonorType extends AbstractType
                 'attr' => [
                     'max_length' => 15, 'required' => true,
                     'placeholder' => 'Phone Number',
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
                 ]
             ])
 
@@ -93,29 +93,33 @@ class BlooddonorType extends AbstractType
               'label' => false,
                 'attr' => [
                     'required' => true,
-                   
-                    'class' => 'form-control rounded border border-info',
+                    'placeholder' => 'Phone Number',
+                    'class' => 'form-control rounded border border-danger',
                 ]
             ])
 
-            /*->add('Blood_Type', TextType::class, [
+            ->add('BloodType', ChoiceType::class, [
+                'placeholder' => 'Your Blood Type',
                 'label' => false,
+                'choices' => [
+                    'A+' => 'A+',
+                    'A-' => 'A-',
+                    'B+' => 'B+',
+                    'B-' => 'B-',
+                    'O+' => 'O+',
+                    'O-' => 'O-',
+                    'AB+' => 'AB+',
+                    'AB-' => 'AB-',
+                ],
                 'attr' => [
-                    'max_length' => 3, 'required' => true,
-                    'placeholder' => 'Your Blood Type',
-                    'class' => 'form-control ',
-                ]
-            ]) */
+                    'required' => true,
+                    'class' => ' btn btn-outline-info dropdown-toggle dropdown-item border border-danger rounded bg-white',
+                ],    
+            
+            ]) 
 
 
-              ->add('Job', TextType::class, [
-                'label' => false,
-                'attr' => [
-                    'max_length' => 15, 'required' => true,
-                    'placeholder' => 'Job',
-                    'class' => '  form-control rounded border border-info',
-                ]
-            ])
+              
 
             ->add('Genre', ChoiceType::class,  [
                 'placeholder' => 'Sexe',
@@ -127,7 +131,7 @@ class BlooddonorType extends AbstractType
                 ],
                 'attr' => [
                     'required' => true,
-                    'class' => ' btn btn-outline-info dropdown-toggle dropdown-item border border-info rounded bg-white',
+                    'class' => ' btn btn-outline-info dropdown-toggle dropdown-item border border-danger rounded bg-white',
                 ],
             ])
 

@@ -10,22 +10,22 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210103011444 extends AbstractMigration
+final class Version20211226040148 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE donor CHANGE age age VARCHAR(30) NOT NULL');
+        $this->addSql('ALTER TABLE donor ADD blood_type VARCHAR(5) NOT NULL, DROP job');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE donor CHANGE age age INT NOT NULL');
+        $this->addSql('ALTER TABLE donor ADD job VARCHAR(10) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, DROP blood_type');
     }
 }

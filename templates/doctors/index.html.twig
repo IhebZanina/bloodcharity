@@ -1,0 +1,303 @@
+
+{% extends 'otherfix.html.twig' %}
+
+{% block title %}{{ app.user.username }}!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+	 .xyz {
+            background-size: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
+            text-align: center;
+        }
+        .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 12px;
+            text-align: center;
+        }
+</style>
+
+
+    
+    <main
+		id="main">
+    <!-- ======= Pricing Section ======= -->
+	<br><br>
+	<br><br>
+    <section id="pricing" class="testimonials pricing ">
+			<div class="container" data-aos="fade-up">
+
+					<div class="section-title ">
+						<h2>Blood donors
+							<i class="icofont-blood-drop"></i>
+						</h2>
+						<p><strong>{{donors | length}}</strong> Blood Donor is available
+						</p>
+					</div>
+
+					<div class="container center_div ">
+						{{ form_start(searchform, {'attr': {'class':'php-email-form'}}) }}
+						<div class="form-row text-center">
+							<div class=" col-md-3">
+								{{ form_row(searchform.City) }}
+							</div>
+
+							<div class="form-group ">
+								{{ form_row(searchform.Search_blood)  }}
+							</div>
+						
+						</div>
+						{{ form_end(searchform) }}
+
+						{% if citysearch != 'OVER THE WORLD'  and  bycitys %}
+							<p> Try another city or<a class="scrollto" href="#testimonials"  onClick="change();"> click here <i class="icofont-hand-drag1"></i></a> 
+							to show all the available donors .  </p>
+						{% endif %}
+					</div>
+
+			<div class="owl-carousel testimonials-carousel" >
+			{% set counter = 0 %}
+			
+		{% if citysearch == 'OVER THE WORLD' %}
+			{% for donor in donors %}
+			<div class="row ">
+			{% set counter = counter + 1 %}
+				<div class="box" >
+					<h3>
+						<i class="icofont-ui-user"></i>
+						{{ donor.firstname }}
+						{{ donor.lastname }}
+						</h3>
+						 
+					<h4><button type="button"  class="btn btn-outline-danger btn-circle btn-sm" onClick="deletnum({{ counter }})">-</button> &nbsp;&nbsp;<sup></sup><a id="clicks{{ counter }}">0</a><span> / Blood Bag</span>&nbsp;&nbsp;&nbsp;<button type="button"  class="btn btn-outline-success btn-circle btn-sm" onClick="addnum({{ counter }})">+</button></h4>
+				
+								
+						<div class="testimonial-item">
+
+									<p style="text-align:left;">
+
+										
+										<i class="icofont-email"></i>
+										<strong>
+											Email:
+										</strong>
+										{{ donor.email }}
+										<br>
+										<i class="icofont-id-card"></i>	
+										<strong>
+											CIN:
+										</strong>
+											{{ donor.CINPassport }}
+										<br>
+										<i class="icofont-phone"></i>
+										<strong>
+											Phone:
+										</strong>
+										{{ donor.phone }}
+										<br>
+										<i class="icofont-birthday-cake"></i>
+										<strong>
+											Age:
+										</strong>
+										{{ 'now'|date('Y') - donor.age|date('Y') }} ans
+										<br>
+										<i class="icofont-live-messenger"></i>
+										<strong>
+											Sexe:
+										</strong>
+										{{ donor.genre }}
+										<br>
+										<i class="icofont-worker"></i>
+										<strong>
+											Blood Type:
+										</strong>
+										{{ donor.BloodType }}
+										<br>
+										<i class="icofont-map"></i>
+										<strong>
+											Country:
+										</strong>
+										{{ donor.country }}
+										<br>
+										<i class="icofont-map-pins"></i>
+										<strong>
+											City:
+										</strong>
+										{{ donor.City }}
+										<br>
+										<i class="icofont-ui-calendar"></i>
+										<strong>
+											Posted At:
+										</strong>
+										{{ donor.datepost|date('m/d/Y') }}
+										
+									</p>
+								<a href="{{path('donordelete',{'id':donor.id})}}"  > <img src="logo/trash.jpg" class="testimonial-img  btn-outline-danger " alt="">  </a>	
+
+							</div>	
+
+					<div class="btn-wrap">
+					<a href="{{path('donordetails',{'id':donor.id,'emailTo':donor.email})}}" class="btn-buy">Save Card</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+
+			{% else %}
+
+				{% if bycitys %}
+					{% for donor in bycitys %}
+					<div class="row ">
+						{% set counter = counter + 1 %}
+						<div class="box" >
+						<h3>
+						<i class="icofont-ui-user"></i>
+						{{ donor.firstname }}
+						{{ donor.lastname }}
+						</h3>
+						 
+					<h4><button type="button"  class="btn btn-outline-danger btn-circle btn-sm" onClick="deletnum({{ counter }})">-</button> &nbsp;&nbsp;<sup></sup><a id="clicks{{ counter }}">0</a><span> / Blood Bag</span>&nbsp;&nbsp;&nbsp;<button type="button"  class="btn btn-outline-success btn-circle btn-sm" onClick="addnum({{ counter }})">+</button></h4>
+				
+								
+						<div class="testimonial-item">
+
+									<p style="text-align:left;">
+
+										
+										<i class="icofont-email"></i>
+										<strong>
+											Email:
+										</strong>
+										{{ donor.email }}
+										<br>
+										<i class="icofont-id-card"></i>	
+										<strong>
+											CIN:
+										</strong>
+											{{ donor.CINPassport }}
+										<br>
+										<i class="icofont-phone"></i>
+										<strong>
+											Phone:
+										</strong>
+										{{ donor.phone }}
+										<br>
+										<i class="icofont-birthday-cake"></i>
+										<strong>
+											Age:
+										</strong>
+										{{ 'now'|date('Y') - donor.age|date('Y') }} ans
+										<br>
+										<i class="icofont-live-messenger"></i>
+										<strong>
+											Sexe:
+										</strong>
+										{{ donor.genre }}
+										<br>
+										<i class="icofont-worker"></i>
+										<strong>
+											Blood Type:
+										</strong>
+										{{ donor.BloodType }}
+										<br>
+										<i class="icofont-map"></i>
+										<strong>
+											Country:
+										</strong>
+										{{ donor.country }}
+										<br>
+										<i class="icofont-map-pins"></i>
+										<strong>
+											City:
+										</strong>
+										{{ donor.City }}
+										<br>
+										<i class="icofont-ui-calendar"></i>
+										<strong>
+											Posted At:
+										</strong>
+										{{ donor.datepost|date('m/d/Y') }}
+										
+									</p>
+								<a href="{{path('donordelete',{'id':donor.id})}}"  > <img src="logo/trash.jpg" class="testimonial-img  btn-outline-danger " alt="">  </a>	
+
+							</div>	
+
+					<div class="btn-wrap">
+					<a href="{{path('donordetails',{'id':donor.id,'emailTo':donor.email})}}" class="btn-buy">Save Card</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+				{% else %}
+						<div class=" testimonial-item">
+							<p style="text-align:justify">
+							<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+							Seems like no donors are available for the moment in <strong>{{citysearch}} </strong> <i class="icofont-exclamation-tringle"></i>, 
+							try another city or<a class="scrollto" href="#testimonials"  onClick="change();"> click here <i class="icofont-hand-drag1"></i></a> 
+							to show all the available donors . <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+							</p>
+							
+						</div>
+				{% endif %}	
+	{% endif %}
+		</div>
+      </div>
+    </section><!-- End Pricing Section -->
+    </main>
+
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+
+			function change(){
+				document.getElementById("searchdonor_City").value = "OVER THE WORLD";
+				document.getElementById("searchdonor_Search_blood").click();
+
+			}
+
+	var clicks = 0;
+	
+	
+
+	function addnum(id) {
+	var ident = 'clicks'+id;
+	clicks = parseInt(document.getElementById(ident).innerHTML)+ 1;
+	document.getElementById(ident).innerHTML = clicks;
+  }
+
+  function deletnum(iddel) {
+	var ident = 'clicks'+iddel;
+	
+	if (document.getElementById(ident).innerHTML != 0){
+		clicks = parseInt(document.getElementById(ident).innerHTML) - 1;
+	document.getElementById(ident).innerHTML = clicks;
+	}
+  }
+
+
+	
+	</script>
+
+{% endblock %}

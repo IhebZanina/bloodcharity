@@ -18,27 +18,27 @@ class Donor
 
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=10)
      */
     private $CIN_Passport;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=10)
      */
     private $First_Name;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=10)
      */
     private $Last_Name;
 
     /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string", length=30)
      */
     private $Email;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=50)
      */
     private $Country;
 
@@ -48,27 +48,27 @@ class Donor
     private $City;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=10)
      */
     private $Phone;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $Age;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=5)
      */
-    private $Job;
+    private $BloodType;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @ORM\Column(type="string", length=8)
      */
     private $Genre;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $Date_Post;
 
@@ -147,12 +147,12 @@ class Donor
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->Phone;
     }
 
-    public function setPhone(int $Phone): self
+    public function setPhone(string $Phone): self
     {
         $this->Phone = $Phone;
 
@@ -171,14 +171,14 @@ class Donor
         return $this;
     }
 
-      public function getJob(): ?string
+      public function getBloodType(): ?string
     {
-        return $this->Job;
+        return $this->BloodType;
     }
 
-    public function setJob(string $Job): self
+    public function setBloodType(string $BloodType): self
     {
-        $this->Job = $Job;
+        $this->BloodType = $BloodType;
 
         return $this;
     }

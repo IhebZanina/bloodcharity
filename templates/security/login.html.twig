@@ -1,0 +1,114 @@
+{% extends 'otherfix.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    
+    {% block welcome %}
+    {% endblock %}
+    {% block signout %}
+    {% endblock %}
+    <!-- ======= Donate BLOOD Section ======= -->
+    <br><br><br><br><br>
+		<section id="appointment" class="appointment section-bg">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Login
+						<i class="icofont-login"></i>
+					</h2>
+					<p>Login as a doctor</p>
+				</div>
+
+
+
+				<div class="form-row">
+                <div class="col-md-4 ">
+					</div>
+
+					<div class="col-md-4 form-group input">
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" placeholder="Name" class="form-control rounded border border-danger" autocomplete="username" required autofocus>
+					</div>
+
+
+				</div>
+				<div class="form-row">
+                <div class="col-md-4 ">
+					</div>
+					<div class="col-md-4 form-group">
+                    <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control rounded border border-danger input" autocomplete="current-password" required>
+					  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    </div>
+				</div>
+
+                <div class="form-row">
+				
+                <div class="col-md-4 ">
+					</div>
+					<div class="col-md-4 form-group">
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input  type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>					
+                    </div>
+                </div>
+			
+				<div class="text-center">
+					{% for message in app.flashes('success_addDoctor') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+					{% endfor %}
+				</div>
+
+				<div class="text-center">
+					<button class="btn btn-lg btn-success" type="submit">
+                        Sign in
+                    </button>
+				</div>
+
+				
+			</div>	
+
+		</section>
+			<!-- End Donate BLOOD Section -->
+
+{#
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+#}
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+    #}
+    {#
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+    #}
+</form>
+{% endblock %}

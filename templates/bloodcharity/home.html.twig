@@ -69,8 +69,7 @@
 	</section>
 	<!-- Home Hero -->
 
-	<main
-		id="main">
+	<main id="main">
 
 		<!-- ======= Featured Services Section ======= -->
 		<section id="featured-services" class="featured-services">
@@ -168,7 +167,7 @@
 
 				<div class="row">
 					<div class="col-lg-6" data-aos="fade-right">
-						<img src="assets/img/about.jpg" class="img-fluid" alt="">
+						<img src="assets/img/about.gif" class="img-fluid" alt="">
 					</div>
 					<div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
 						<h3>Our Mission, Vision & Values.</h3>
@@ -383,22 +382,22 @@
 
 				<div class="form-row">
 
-				<div class="col-md-4 form-group input">
-						{{ form_row(formdonor.CIN_Passport) }}
-						 <div class="validate"></div>
+					<div class="col-md-4 form-group input">
+							{{ form_row(formdonor.CIN_Passport) }}
+							<div class="validate"></div>
 					</div>
 
-	
-					<div class="col-md-4 form-group">
-						{{ form_row(formdonor.First_Name) }}
-						 <div class="validate"></div>
-					</div>
+		
+						<div class="col-md-4 form-group">
+							{{ form_row(formdonor.First_Name) }}
+							<div class="validate"></div>
+						</div>
 
-					<div class="col-md-4 form-group">
-						{{ form_row(formdonor.Last_Name) }}
-					</div>
+						<div class="col-md-4 form-group">
+							{{ form_row(formdonor.Last_Name) }}
+						</div>
+						
 					
-				
 				</div>
 				<div class="form-row">
 
@@ -426,7 +425,7 @@
 					</div>
 
 					<div class="col-md-4 form-group ">
-						{{ form_row(formdonor.Job) }}
+						{{ form_row(formdonor.BloodType) }}
 					</div>
 
 				</div>
@@ -441,25 +440,31 @@
 					</div>
 				</div>
 
-
 				<div class="mb-2 text-center">
-					{% for message in app.flashes('success') %}
+					{% for message in app.flashes('success_donor') %}
 						<div class="alert alert-success">
 							{{ message }}
 						</div>
 					{% endfor %}
-
 				</div>
 
-
+				<div class="mb-2 text-center">
+									{% for message in app.flashes('error_donor') %}
+										<div class="alert alert-danger">
+											{{ message }}
+										</div>
+									{% endfor %}
+								</div>
 				<div class="text-center">
 					{{ form_row(formdonor.Donate_blood)  }}
 				</div>
 
 
 				{{ form_end(formdonor) }}
+				
+			</div>	
 
-			</section>
+		</section>
 			<!-- End Donate BLOOD Section -->
 
 
@@ -501,121 +506,8 @@
 
 					{% if citysearch == 'OVER THE WORLD' %}
 						{% for donor in donors %}
+						
 							<div class="testimonial-item">
-
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									<br>
-									<i class="icofont-email"></i>
-									<strong>
-										Email:
-									</strong>
-									{{ donor.email }}
-									<br>
-									<i class="icofont-phone"></i>
-									<strong>
-										Phone:
-									</strong>
-									{{ donor.phone }}
-									<br>
-									<i class="icofont-birthday-cake"></i>
-									<strong>
-										Age:
-									</strong>
-									{{ 'now'|date('Y') - donor.age|date('Y') }}
-									<br>
-									<i class="icofont-live-messenger"></i>
-									<strong>
-										Sexe:
-									</strong>
-									{{ donor.genre }}
-									<br>
-									<i class="icofont-worker"></i>
-									<strong>
-										Job:
-									</strong>
-									{{ donor.job }}
-									<br>
-									<i class="icofont-map"></i>
-									<strong>
-										Country:
-									</strong>
-									{{ donor.country }}
-									<br>
-									<i class="icofont-ui-calendar"></i>
-									<strong>
-										Posted At:
-									</strong>
-									{{ donor.datepost|date('m/d/Y') }}
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-
-								<img src="assets/img/doctors/doctors-1.jpg" class="testimonial-img" alt="">
-								<h3>
-									<i class="icofont-id-card"></i>
-									{{ donor.firstname }}
-									{{ donor.lastname }}</h3>
-								<h4>
-									<i class="icofont-google-map"></i>
-									{{ donor.country }}
-								</h4>
-							</div>
-						{% endfor %}
-
-					{% else %}
-
-						{% if bycitys %}
-							{% for donor in bycitys %}
-							<div class="testimonial-item">
-
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									<br>
-									<i class="icofont-email"></i>
-									<strong>
-										Email:
-									</strong>
-									{{ donor.email }}
-									<br>
-									<i class="icofont-phone"></i>
-									<strong>
-										Phone:
-									</strong>
-									{{ donor.phone }}
-									<br>
-									<i class="icofont-birthday-cake"></i>
-									<strong>
-										Age:
-									</strong>
-									{{ 'now'|date('Y') - donor.age|date('Y') }}
-									<br>
-									<i class="icofont-live-messenger"></i>
-									<strong>
-										Sexe:
-									</strong>
-									{{ donor.genre }}
-									<br>
-									<i class="icofont-worker"></i>
-									<strong>
-										Job:
-									</strong>
-									{{ donor.job }}
-									<br>
-									<i class="icofont-map"></i>
-									<strong>
-										Country:
-									</strong>
-									{{ donor.country }}
-									<br>
-									<i class="icofont-ui-calendar"></i>
-									<strong>
-										Posted At:
-									</strong>
-									{{ donor.datepost|date('m/d/Y') }}
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-
-								<img src="assets/img/doctors/doctors-1.jpg" class="testimonial-img" alt="">
 								<h3>
 									<i class="icofont-id-card"></i>
 									{{ donor.firstname }}
@@ -624,6 +516,127 @@
 									<i class="icofont-google-map"></i>
 									{{ donor.city }}
 								</h4>
+								<p>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+									<br>
+									<i class="icofont-email"></i>
+									<strong>
+										Email:
+									</strong>
+									{{ donor.email }}
+									<br>
+									<i class="icofont-phone"></i>
+									<strong>
+										Phone:
+									</strong>
+									{{ donor.phone }}
+									<br>
+									<i class="icofont-birthday-cake"></i>
+									<strong>
+										Age:
+									</strong>
+									{{ 'now'|date('Y') - donor.age|date('Y') }} ans
+									<br>
+									<i class="icofont-live-messenger"></i>
+									<strong>
+										Sexe:
+									</strong>
+									{{ donor.genre }}
+									<br>
+									<i class="icofont-worker"></i>
+									<strong>
+										Blood Type:
+									</strong>
+									{{ donor.BloodType }}
+									<br>
+									<i class="icofont-map"></i>
+									<strong>
+										Country:
+									</strong>
+									{{ donor.country }}
+									<br>
+									<i class="icofont-map-pins"></i>
+									<strong>
+										City:
+									</strong>
+									{{ donor.City }}
+									<br>
+									<i class="icofont-ui-calendar"></i>
+									<strong>
+										Posted At:
+									</strong>
+									{{ donor.datepost|date('m/d/Y') }}
+									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+								</p>
+
+								
+								
+							</div>
+						{% endfor %}
+
+					{% else %}
+
+						{% if bycitys %}
+							{% for donor in bycitys %}
+							<div class="testimonial-item">
+								<h3>
+									<i class="icofont-id-card"></i>
+									{{ donor.firstname }}
+									{{ donor.lastname }}</h3>
+								<h4>
+									<i class="icofont-google-map"></i>
+									{{ donor.city }}
+								</h4>
+								
+								<p>
+							
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+									<br>
+									<i class="icofont-email"></i>
+									<strong>
+										Email:
+									</strong>
+									{{ donor.email }}
+									<br>
+									<i class="icofont-phone"></i>
+									<strong>
+										Phone:
+									</strong>
+									{{ donor.phone }}
+									<br>
+									<i class="icofont-birthday-cake"></i>
+									<strong>
+										Age:
+									</strong>
+									{{ 'now'|date('Y') - donor.age|date('Y') }} ans
+									<br>
+									<i class="icofont-live-messenger"></i>
+									<strong>
+										Sexe:
+									</strong>
+									{{ donor.genre }}
+									<br>
+									<i class="icofont-worker"></i>
+									<strong>
+										Blood Type:
+									</strong>
+									{{ donor.BloodType }}
+									<br>
+									<i class="icofont-map"></i>
+									<strong>
+										Country:
+									</strong>
+									{{ donor.country }}
+									<br>
+									<i class="icofont-ui-calendar"></i>
+									<strong>
+										Posted At:
+									</strong>
+									{{ donor.datepost|date('m/d/Y') }}
+									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+								</p>
+
+								
 							</div>
 							{% endfor %}
 						
@@ -834,36 +847,56 @@
 									<div class="info-box mt-4">
 										<i class="bx bx-phone-call"></i>
 										<h3>Call Us</h3>
-										<p>+216 51100490<br><br></p>
+										<p>+216 28 686 956<br><br></p>
 									</div>
 								</div>
 							</div>
 
 						</div>
 
-						<div class="col-lg-6">
+						<div class="">
 						
 							{{ form_start(contactform, {'attr': {'class':'php-email-form'}}) }}
 								<div class="form-row">
 									<div class="col form-group">
-										{{ form_row(contactform.First_Name) }}
+										{{ form_row(contactform.FirstName) }}
 									</div>
 									<div class="col form-group">
-									{{ form_row(contactform.Last_Name) }}
+									{{ form_row(contactform.MyEmail) }}
 									</div>
 								</div>
 								<div class="form-group">
-									{{ form_row(contactform.City) }}
+									{{ form_row(contactform.Subject) }}
 								</div>
 								<div class="form-group">
-									{{ form_row(contactform.CIN_Passport) }}
+									{{ form_row(contactform.Message) }}
 								</div>
+								
+								<div class="mb-2 text-center">
+									{% for message in app.flashes('success_contact') %}
+										<div class="alert alert-success">
+											{{ message }}
+										</div>
+									{% endfor %}
+								</div>
+
+								<div class="mb-2 text-center">
+									{% for message in app.flashes('error_contact') %}
+										<div class="alert alert-danger">
+											{{ message }}
+										</div>
+									{% endfor %}
+								</div>
+								
 								<div class="mb-3">	
 								</div><br>
 								<div class="text-center">
 									{{ form_row(contactform.Send_Message) }}
 								</div>
 							{{ form_end(contactform) }}
+
+							
+
 						</div>
 
 					</div>
@@ -871,7 +904,7 @@
 				</div>
 			</section>
 			<!-- End Contact Section -->
-		</main>
+	</main>
 		<!-- End #main -->
 
 		<script>
@@ -880,4 +913,5 @@
 				document.getElementById("searchdonor_Search_blood").click();
 			}
 		</script>
-	{% endblock %}
+
+{% endblock %}

@@ -14,41 +14,46 @@ class ContactdonorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('First_Name',  TextType::class, [
+                ->add('FirstName',  TextType::class, [
+                'mapped' => false,
                 'label' => false,
                 'attr' => [
                     'max_length' => 15, 'required' => false,
                     'placeholder' => 'Your Name',  
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
                 ]
             ])
 
 
-                ->add('Last_Name',  EmailType::class, [
+                ->add('MyEmail',  EmailType::class, [
+                'mapped' => false,
+
                 'label' => false,
                 'attr' => [
                     'max_length' => 25, 'required' => true,
                     'placeholder' => 'Your Email',
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
 
                 ]
             ])
 
-                ->add('City',  TextType::class, [
+                ->add('Subject',  TextType::class, [
+                'mapped' => false,
                 'label' => false,
                 'attr' => [
                     'max_length' => 25, 'required' => true,
                     'placeholder' => 'Subject',  
-                    'class' => 'form-control rounded border border-info',
+                    'class' => 'form-control rounded border border-danger',
                 ]
             ])
 
-                ->add('CIN_Passport',  TextareaType::class, [
+                ->add('Message',  TextareaType::class, [
+                'mapped' => false,
                 'label' => false,
                 'attr' => [
                     'max_length' => 50, 'required' => true,
                     'placeholder' => 'Message',  
-                    'class' => 'form-control rounded border border-info ',
+                    'class' => 'form-control rounded border border-danger ',
                     'name'=>'message',
                 ]
             ])
@@ -56,11 +61,6 @@ class ContactdonorType extends AbstractType
                 ->add('Send_Message', SubmitType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            // Configure your form options here
-        ]);
-    }
+  
 }
 

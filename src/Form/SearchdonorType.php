@@ -15,12 +15,12 @@ class SearchdonorType extends AbstractType
         $builder
 
             ->add('City', TextType::class, [
+                'mapped' => false,
                 'label' => false,
                 'attr' => [
-                    'max_length' => 10,
-                    'required' => true,
+                    'max_length' => 20,
                     'placeholder' => 'Search in',
-                    'class' => ' form-control rounded border border-info',
+                    'class' => ' form-control rounded border border-danger',
                 ]
             ])
 
@@ -28,15 +28,10 @@ class SearchdonorType extends AbstractType
                 'label' => ' Search',
 
                 'attr' => [
-                    'class' => 'section-bg btn btn-lg btn-outline-info rounded  border border-info icofont-search-map ',
+                    'class' => 'section-bg btn btn-lg btn-outline-danger rounded  border border-danger icofont-search-map ',
                 ]
             ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            // Configure your form options here
-        ]);
-    }
+    
 }
